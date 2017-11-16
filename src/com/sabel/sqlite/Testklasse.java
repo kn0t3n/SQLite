@@ -6,8 +6,8 @@ public class Testklasse {
 
     public static void main(String[] args) throws SQLException {
 
-        Person person = new Person("Maier", 1976);
-        Person person1 = new Person("Wagner", 1975);
+        Person person = new Person(1, "Maier", 1976);
+        Person person1 = new Person(2, "Wagner", 1975);
 
         System.out.println(person);
         System.out.println(person1);
@@ -22,7 +22,7 @@ public class Testklasse {
 
         connection = DriverManager.getConnection("jdbc:sqlite:d:\\Test.sqlite");
         statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT id, nachname, jahrgang FROM person");
+        ResultSet resultSet = statement.executeQuery("SELECT id, nachname, jahrgang FROM person" + ";");
         while (resultSet.next()) {
             int id = resultSet.getInt(1);
             String name = resultSet.getString("nachname");
